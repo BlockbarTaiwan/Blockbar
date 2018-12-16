@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>For Blockbar Staff</title>
+
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+</head>
+<body style="background-color:#000000">
+    <div class="container">
+
+        <img src="bar_finished.png" alt="BlockbarLogo" width="551" height="322">
+
+        <h1><p style="color:#ffffff; font-size:50px">For Blockbar Staff</p></h1>
+
+		<label for="enterUsername" class="col-lg-2 control-label"><p style="color:#ffffff; font-size:30px">Staff Name</p></label>
+		<input id="enterUsername" type="text">
+
+		<label for="enterPassword" class="col-lg-2 control-label"><p style="color:#ffffff; font-size:30px">Staff Password</p></label>
+		<input id="enterPassword" type="text">
+		
+		<label for="country" class="col-lg-2 control-label"><p style="color:#ffffff; font-size:30px">Country</p></label>
+        <input id="country" type="text">
+
+        <label for="description" class="col-lg-2 control-label"><p style="color:#ffffff; font-size:30px">Description</p></label>
+        <input id="description" type="text">
+        
+        <label for="province" class="col-lg-2 control-label"><p style="color:#ffffff; font-size:30px">Province</p></label>
+        <input id="province" type="text">
+
+        <label for="title class="col-lg-2 control-label"><p style="color:#ffffff; font-size:30px">Title</p></label>
+        <input id="title" type="text">
+
+        <label for="winery" class="col-lg-2 control-label"><p style="color:#ffffff; font-size:30px">Winery</p></label>
+        <input id="winery" type="text">
+
+        <button id="button" style="color:#000000; font-size:30px">Insert Data</button>
+
+		<p style="color:#ffffff;">
+
+		<h2 id="resultenterUsername"></h2>
+		
+		<h3 id="resultCountry"></h3>
+		
+		<h4 id="resultDescription"></h4>
+
+		<h5 id="resultProvince"></h5>
+
+		<h6 id="resultTitle"></h6>
+
+		<p class="h7" id="resultWinery"></p>
+	
+		</p>
+
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js" integrity="sha256-nWBTbvxhJgjslRyuAKJHK+XcZPlCnmIAAMixz6EefVk=" crossorigin="anonymous"></script>
+    <script>
+       // Script Area
+       window.dexon.enable()
+       
+       // a Pop up for user 
+       const dexonProvider = window.dexon
+       const web3 = new Web3(dexonProvider)
+       
+       // init web3 with dexon provider
+       web3.eth.getAccounts().then(accounts => {
+           console.log('0x8b4f182A36752c95acB605C85E2BE3FbFB8b0919') // get accounts
+           })
+       
+       var BlockbarDataContract = new web3.eth.Contract([
+	    {
+		    "constant": false,
+		    "inputs": [
+		    	{
+		    		"name": "_country",
+		    		"type": "string"
+		    	}
+		    ],
+		    "name": "setCountry",
+		    "outputs": [],
+		    "payable": false,
+		    "stateMutability": "nonpayable",
+		    "type": "function"
+	    },
+	    {
+		    "constant": false,
+		    "inputs": [
+		    	{
+		    		"name": "_description",
+		    		"type": "string"
+		    	}
+		    ],
+		    "name": "setDescription",
+		    "outputs": [],
+		    "payable": false,
+		    "stateMutability": "nonpayable",
+		    "type": "function"
+	    },
+	    {
+		    "constant": false,
+		    "inputs": [
+		    	{
+		    		"name": "_enterPassword",
+		    		"type": "string"
+		    	}
+		    ],
+		    "name": "setenterPassword",
+		    "outputs": [],
+		    "payable": false,
+		    "stateMutability": "nonpayable",
+		    "type": "function"
+	    },  
+	    {
+		    "constant": false,
+		    "inputs": [
+		    	{
+		    		"name": "_enterUsername",
+		    		"type": "string"
+		    	}
+		    ],
+		    "name": "setenterUsername",
+		    "outputs": [],
+		    "payable": false,
+		    "stateMutability": "nonpayable",
+		    "type": "function"
+	    },
+	    {
+		    "constant": false,
+		    "inputs": [
+			    {
+			    	"name": "_province",
+			    	"type": "string"
+			    }
+		    ],
+		    "name": "setProvince",
+		    "outputs": [],
+		    "payable": false,
+		    "stateMutability": "nonpayable",
+		    "type": "function"
+	    },
+	    {
+		    "constant": false,
+		    "inputs": [
+		    	{
+		    		"name": "_title",
+		    		"type": "string"
+		    	}
+		    ],
+		    "name": "setTitle",
+		    "outputs": [],
+		    "payable": false,
+		    "stateMutability": "nonpayable",
+		    "type": "function"
+	    },
+	    {
+		    "constant": false,
+		    "inputs": [
+		    	{
+		    		"name": "_winery",
+		    		"type": "string"
+		    	}
+		    ],
+		    "name": "setWinery",
+		    "outputs": [],
+		    "payable": false,
+		    "stateMutability": "nonpayable",
+		    "type": "function"
+	    },
+	    {
+		    "constant": true,
+		    "inputs": [],
+		    "name": "getCountry",
+		    "outputs": [
+		    	{
+		    		"name": "",
+		    		"type": "string"
+		    	}
+		    ],
+		    "payable": false,
+		    "stateMutability": "view",
+		    "type": "function"
+	    },
+	    {
+		    "constant": true,
+		    "inputs": [],
+		    "name": "getDescription",
+		    "outputs": [
+		    	{
+				    "name": "",
+				    "type": "string"
+			    }
+		    ],
+		    "payable": false,
+		    "stateMutability": "view",
+		    "type": "function"
+	    },
+	    {
+		    "constant": true,
+		    "inputs": [],
+		    "name": "getenterPassword",
+		    "outputs": [
+		    	{
+		    		"name": "",
+		    		"type": "string"
+		    	}
+		    ],
+		    "payable": false,
+		    "stateMutability": "view",
+		    "type": "function"
+	    },
+	    {
+		    "constant": true,
+		    "inputs": [],
+		    "name": "getenterUsername",
+		    "outputs": [
+		    	{
+		    		"name": "",
+		    		"type": "string"
+		    	}
+		    ],
+		    "payable": false,
+		    "stateMutability": "view",
+		    "type": "function"
+	    },
+	    {
+		    "constant": true,
+		    "inputs": [],
+		    "name": "getProvince",
+		    "outputs": [
+		    	{
+		    		"name": "",
+		    		"type": "string"
+		    	}
+		    ],
+		    "payable": false,
+		    "stateMutability": "view",
+		    "type": "function"
+	    },
+	    {
+		    "constant": true,
+		    "inputs": [],
+		    "name": "getTitle",
+		    "outputs": [
+		    	{
+		    		"name": "",
+		    		"type": "string"
+		    	}
+		    ],
+		    "payable": false,
+		    "stateMutability": "view",
+		    "type": "function"
+	    },
+	    {
+		    "constant": true,
+		    "inputs": [],
+		    "name": "getWinery",
+		    "outputs": [
+		    	{
+		    		"name": "",
+		    		"type": "string"
+		    	}
+		    ],
+		    "payable": false,
+		    "stateMutability": "view",
+		    "type": "function"
+	    }
+    ],'0x1ef2c58c6f1e0e2a52ccb2f785ced6b211636d86')      
+       //const blockbarContract = new web3.eth.Contract(
+       //    blockbarContract.abi,
+       //    blockbarContract.address,
+       //    )
+           
+           //blockbarContract.methods.value().call().then(num => {
+               //console.log('num', '0x0aeda0ba33b67261bc823243b8ed59d01f182c5a')
+            //})
+        
+        //var blockbarContractAdd = BlockbarDataContract.at('0x73b0068a7857d0764c39da327de281cbf279bdb0');
+        //console.log(blockbarContractAdd);
+
+        // contracts methods will be expose here
+        //BlockbarDataContract.methods.getCountry().call().then(Country=>{
+			//console.log('AA',Country);
+			//if(!error){
+        //    $("#resultCountry").text('Country=' + Country);
+		//	$("#resultCountry").css('color','white');
+            //}else
+            //    console.log(error);
+		//});
+		
+		//BlockbarDataContract.methods.getCountry(function(error,result).call().then(C);
+
+		//BlockbarDataContract.methods.getDescription().call().then(Description=>{
+            //if(!error){
+        //    $("#resultDescription").text('Description=' + Description);
+		//	$("#resultDescription").css('color','white');
+            //}else
+            //    console.log(error);
+        //});
+
+		//BlockbarDataContract.methods.getProvince().call().then(Province=>{
+            //if(!error){
+        //    $("#resultProvince").text('Province=' + Province);
+		//	$("#resultProvince").css('color','white');
+            //}else
+            //    console.log(error);
+       // });
+
+		//BlockbarDataContract.methods.getTitle().call().then(Title=> {
+            //if(!error){
+        //    $("#resultTitle").text('Title=' + Title);
+		//	$("#resultTitle").css('color','white');
+            //}else
+            //    console.log(error);
+        //});
+
+		//BlockbarDataContract.methods.getWinery().call().then(Winery=> {
+            //if(!error){
+         //   $("#resultWinery").text('Winery=' + Winery);
+		//	$("#resultWinery").css('color','white');
+            //}else
+            //    console.log(error);
+        //});
+        
+        $("#button").click(function() {
+            BlockbarDataContract.methods.setenterUsername($("#enterUsername").val()).send({from:'0x8b4f182A36752c95acB605C85E2BE3FbFB8b0919'}).then(setenterUsername=>{
+			});
+
+			BlockbarDataContract.methods.setenterPassword($("#enterPassword").val()).send({from:'0x8b4f182A36752c95acB605C85E2BE3FbFB8b0919'}).then(setenterPassword=>{
+			});
+			
+			BlockbarDataContract.methods.setCountry($("#country").val()).send({from:'0x8b4f182A36752c95acB605C85E2BE3FbFB8b0919'}).then(setCountry=>{
+			});
+
+			BlockbarDataContract.methods.setDescription($("#description").val()).send({from:'0x8b4f182A36752c95acB605C85E2BE3FbFB8b0919'}).then(setDescription=>{
+			});
+
+			BlockbarDataContract.methods.setProvince($("#province").val()).send({from:'0x8b4f182A36752c95acB605C85E2BE3FbFB8b0919'}).then(setProvince=>{
+			});
+
+			BlockbarDataContract.methods.setTitle($("#title").val()).send({from:'0x8b4f182A36752c95acB605C85E2BE3FbFB8b0919'}).then(setTitle=>{
+			});
+
+			BlockbarDataContract.methods.setWinery($("#winery").val()).send({from:'0x8b4f182A36752c95acB605C85E2BE3FbFB8b0919'}).then(setWinery=>{
+			});
+        });
+
+    </script>
+
+</body>
+</html>
